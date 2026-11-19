@@ -1,66 +1,189 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Iris — UX Showcase</title>
-  <meta name="description" content="A showcase and directory of the UX team's POCs, Figma files and prototypes." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%237c5cff'/><circle cx='50' cy='50' r='16' fill='white'/></svg>" />
+  <meta name="description" content="The living library of everything the UX team is building: POCs, Figma files and prototypes." />
+  <meta name="theme-color" content="#09090b" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23a78bfa'/><stop offset='.5' stop-color='%23f472b6'/><stop offset='1' stop-color='%2322d3ee'/></linearGradient></defs><circle cx='50' cy='50' r='42' fill='url(%23g)'/><circle cx='50' cy='50' r='15' fill='%2309090b'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('iris-theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap header-inner">
+  <div class="bg-fx" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="aurora a1"></div>
+    <div class="aurora a2"></div>
+    <div class="aurora a3"></div>
+  </div>
+
+  <header class="nav">
+    <div class="container nav-inner">
       <a class="brand" href="./" aria-label="Iris home">
-        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="iris-mark" aria-hidden="true"><span></span></span>
         <span class="brand-name">Iris</span>
+        <span class="brand-tag">UX Showcase</span>
       </a>
-      <div class="header-actions">
-        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
-        <a class="btn btn-primary" id="submit-link" href="#" target="_blank" rel="noopener">+ Submit work</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#directory">Directory</a>
+        <a href="#how">How it works</a>
+        <a id="nav-repo" href="#" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="search-trigger" id="open-palette" type="button" aria-label="Search (Command K)">
+          <span data-icon="search"></span>
+          <span class="search-trigger-label">Search work…</span>
+          <kbd class="kbd" id="kbd-mod">⌘K</kbd>
+        </button>
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle theme">
+          <span data-icon="sun" class="only-dark"></span>
+          <span data-icon="moon" class="only-light"></span>
+        </button>
+        <a class="btn btn-primary btn-sm" id="submit-link" href="#" target="_blank" rel="noopener">
+          <span data-icon="plus"></span><span class="hide-sm">Submit work</span>
+        </a>
       </div>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <h1>Everything the UX team is building.</h1>
-      <p>POCs, Figma files and prototypes in one place. Browse, search and get inspired.</p>
-      <div class="stats" id="stats" aria-live="polite"></div>
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <a class="announce" id="announce" href="#" target="_blank" rel="noopener">
+          <span class="announce-dot"></span>
+          Submit straight from a GitHub issue
+          <span data-icon="arrow-right"></span>
+        </a>
+        <h1 class="hero-title">
+          The living library of<br />
+          <span class="grad-text">everything UX</span> is building.
+        </h1>
+        <p class="hero-sub">POCs, Figma files and prototypes from across the team, all in one place. Browse what's in flight, find prior art, and ship together.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#directory">Explore the work <span data-icon="arrow-down"></span></a>
+          <a class="btn btn-ghost" id="hero-submit" href="#" target="_blank" rel="noopener"><span data-icon="upload"></span> Share yours</a>
+        </div>
+        <dl class="stats" id="stats"></dl>
+      </div>
+      <div class="hero-feature" id="featured" aria-label="Latest project"></div>
     </section>
 
-    <section class="toolbar" aria-label="Filters">
-      <div class="search">
-        <input id="search" type="search" placeholder="Search by title, designer, tag…" autocomplete="off" aria-label="Search projects" />
-        <kbd>/</kbd>
-      </div>
-      <div class="selects">
-        <select id="filter-team" aria-label="Filter by team"><option value="">All teams</option></select>
-        <select id="filter-status" aria-label="Filter by status"><option value="">Any status</option></select>
-        <select id="sort" aria-label="Sort">
-          <option value="newest">Newest first</option>
-          <option value="oldest">Oldest first</option>
-          <option value="az">A → Z</option>
-        </select>
+    <section class="directory container" id="directory">
+      <div class="sidebar-scrim" id="sidebar-scrim"></div>
+      <aside class="sidebar" id="sidebar" aria-label="Filters">
+        <div class="sidebar-head">
+          <span>Filters</span>
+          <button class="icon-btn icon-btn-sm" id="sidebar-close" type="button" aria-label="Close filters"><span data-icon="x"></span></button>
+        </div>
+        <div id="sidebar-body"></div>
+      </aside>
+
+      <div class="content">
+        <div class="toolbar">
+          <button class="btn btn-ghost btn-sm mobile-only" id="sidebar-open" type="button"><span data-icon="filter"></span> Filters</button>
+          <label class="search-inline">
+            <span data-icon="search"></span>
+            <input id="search" type="search" placeholder="Filter by title, designer, tag…" autocomplete="off" aria-label="Filter projects" />
+            <kbd class="kbd">/</kbd>
+          </label>
+          <div id="sort-slot"></div>
+          <div class="segmented" role="group" aria-label="View">
+            <button type="button" data-view="grid" aria-pressed="true" aria-label="Grid view"><span data-icon="grid"></span></button>
+            <button type="button" data-view="list" aria-pressed="false" aria-label="List view"><span data-icon="list"></span></button>
+          </div>
+        </div>
+
+        <div class="results-meta">
+          <span id="result-count" class="mono muted"></span>
+          <div class="active-filters" id="active-filters"></div>
+        </div>
+
+        <div id="results" class="results grid-view" aria-live="polite"></div>
+
+        <div id="empty" class="empty" hidden>
+          <div class="empty-orb"><span data-icon="search"></span></div>
+          <h3>Nothing matches those filters</h3>
+          <p>Try a different search, or clear your filters.</p>
+          <button class="btn btn-ghost btn-sm" id="clear-filters" type="button">Clear all filters</button>
+        </div>
       </div>
     </section>
 
-    <nav class="chips" id="type-chips" aria-label="Filter by type"></nav>
-    <div class="chips tag-chips" id="tag-chips" aria-label="Filter by tag"></div>
-
-    <section id="grid" class="grid" aria-live="polite"></section>
-    <p id="empty" class="empty" hidden>No projects match your filters. <button class="link-btn" id="clear-filters" type="button">Clear filters</button></p>
+    <section class="how container" id="how">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>From idea to showcase in about a minute.</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num mono">01</span>
+          <span class="step-icon" data-icon="file"></span>
+          <h3>Fill the form</h3>
+          <p>Open a submission issue. Add a title, links, a cover image and tags. No accounts or tools to set up.</p>
+        </li>
+        <li class="step">
+          <span class="step-num mono">02</span>
+          <span class="step-icon" data-icon="bolt"></span>
+          <h3>It publishes itself</h3>
+          <p>A GitHub Action reads the issue, adds your work to the directory and redeploys the site.</p>
+        </li>
+        <li class="step">
+          <span class="step-num mono">03</span>
+          <span class="step-icon" data-icon="share"></span>
+          <h3>Share the link</h3>
+          <p>Every project gets its own link. To update it, edit the issue and the site follows.</p>
+        </li>
+      </ol>
+    </section>
   </main>
 
-  <footer class="site-footer wrap">
-    <span>Iris · UX Showcase</span>
-    <a id="repo-link" href="#" target="_blank" rel="noopener">View on GitHub</a>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="brand small"><span class="iris-mark sm" aria-hidden="true"><span></span></span> Iris</span>
+      <span class="muted">Built by the UX team · hosted on GitHub Pages</span>
+      <a id="footer-repo" class="muted" href="#" target="_blank" rel="noopener">Source ↗</a>
+    </div>
   </footer>
 
-  <dialog id="detail" class="detail" aria-labelledby="detail-title">
-    <button class="icon-btn close" id="detail-close" type="button" aria-label="Close">✕</button>
-    <div id="detail-body"></div>
+  <dialog id="drawer" class="drawer" aria-labelledby="drawer-title">
+    <div class="drawer-panel">
+      <div class="drawer-top">
+        <span class="mono muted small" id="drawer-crumb">Project</span>
+        <div class="drawer-top-actions">
+          <button class="icon-btn icon-btn-sm" id="drawer-copy" type="button" aria-label="Copy link"><span data-icon="link"></span></button>
+          <button class="icon-btn icon-btn-sm" id="drawer-close" type="button" aria-label="Close"><span data-icon="x"></span></button>
+        </div>
+      </div>
+      <div class="drawer-body" id="drawer-body"></div>
+    </div>
   </dialog>
+
+  <dialog id="palette" class="palette" aria-label="Search">
+    <div class="palette-panel">
+      <label class="palette-input">
+        <span data-icon="search"></span>
+        <input id="palette-input" type="text" placeholder="Search projects, designers, tags…" autocomplete="off" role="combobox" aria-expanded="true" aria-controls="palette-list" />
+        <kbd class="kbd">esc</kbd>
+      </label>
+      <ul class="palette-list" id="palette-list" role="listbox"></ul>
+      <div class="palette-foot mono">
+        <span><kbd class="kbd">↑</kbd><kbd class="kbd">↓</kbd> navigate</span>
+        <span><kbd class="kbd">↵</kbd> open</span>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="assets/app.js" defer></script>
 </body>
