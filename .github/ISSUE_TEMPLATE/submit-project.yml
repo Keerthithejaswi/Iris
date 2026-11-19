@@ -1,0 +1,86 @@
+name: Submit work to Iris
+description: Add a POC, Figma file or prototype to the Iris showcase.
+title: "[Iris] "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing! 🎨 Fill this in and your work shows up on Iris in about a minute.
+        Want to update it later? Edit this issue and the site updates too.
+  - type: input
+    id: title
+    attributes:
+      label: Project title
+      placeholder: Onboarding flow redesign
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is it, what problem does it explore, and what's interesting about it?
+    validations:
+      required: true
+  - type: input
+    id: designer
+    attributes:
+      label: Designer(s)
+      placeholder: Ava Patel, Leo Kim
+    validations:
+      required: true
+  - type: input
+    id: team
+    attributes:
+      label: Team / product area
+      placeholder: Growth
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Prototype
+        - POC
+        - Figma
+        - Case study
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - Exploring
+        - In progress
+        - In review
+        - Shipped
+        - Archived
+    validations:
+      required: true
+  - type: input
+    id: figma
+    attributes:
+      label: Figma link
+      placeholder: https://www.figma.com/design/...
+  - type: input
+    id: prototype
+    attributes:
+      label: Prototype / live link
+      placeholder: https://...
+  - type: input
+    id: repo
+    attributes:
+      label: Source code link
+      placeholder: https://github.com/...
+  - type: textarea
+    id: thumbnail
+    attributes:
+      label: Cover image
+      description: Drag and drop a screenshot here (16:10 works best), or paste an image URL.
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated
+      placeholder: onboarding, ai, mobile

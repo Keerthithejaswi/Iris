@@ -1,0 +1,50 @@
+[
+  {
+    "id": "sample-onboarding-flow",
+    "title": "Onboarding flow redesign",
+    "description": "A guided, three-step onboarding that cuts time-to-first-value in half. Built as a clickable prototype with AI-generated copy variants.\n\n(Sample entry. Delete it once real projects are in.)",
+    "designer": "Ava Patel",
+    "team": "Growth",
+    "type": "prototype",
+    "status": "In review",
+    "figma": "https://www.figma.com/community/file/1035203688168086460",
+    "prototype": "https://example.com",
+    "repo": "",
+    "thumbnail": "",
+    "tags": ["onboarding", "ai", "mobile"],
+    "createdAt": "2026-11-12T10:00:00Z",
+    "issue": ""
+  },
+  {
+    "id": "sample-dashboard-poc",
+    "title": "Analytics dashboard POC",
+    "description": "Vanilla HTML/JS proof-of-concept exploring a denser, keyboard-first analytics view.\n\n(Sample entry.)",
+    "designer": "Leo Kim",
+    "team": "Platform",
+    "type": "poc",
+    "status": "Exploring",
+    "figma": "",
+    "prototype": "https://example.com",
+    "repo": "https://github.com/Keerthithejaswi/Iris",
+    "thumbnail": "",
+    "tags": ["data-viz", "desktop"],
+    "createdAt": "2026-11-05T09:30:00Z",
+    "issue": ""
+  },
+  {
+    "id": "sample-design-system-tokens",
+    "title": "Design tokens v2",
+    "description": "Refreshed color, spacing and type tokens with dark-mode parity.\n\n(Sample entry.)",
+    "designer": "Maya Singh",
+    "team": "Design System",
+    "type": "figma",
+    "status": "Shipped",
+    "figma": "https://www.figma.com/community/file/1035203688168086460",
+    "prototype": "",
+    "repo": "",
+    "thumbnail": "",
+    "tags": ["design-system", "tokens"],
+    "createdAt": "2026-10-28T14:00:00Z",
+    "issue": ""
+  }
+]
