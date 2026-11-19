@@ -3,7 +3,7 @@
     "id": "sample-onboarding-flow",
     "title": "Onboarding flow redesign",
     "description": "A guided, three-step onboarding that cuts time-to-first-value in half. Built as a clickable prototype with AI-generated copy variants.\n\n(Sample entry. Delete it once real projects are in.)",
-    "designer": "Ava Patel",
+    "designer": "Manish Kumar",
     "team": "Growth",
     "type": "prototype",
     "status": "In review",
@@ -16,14 +16,14 @@
       "ai",
       "mobile"
     ],
-    "createdAt": "2026-11-12T10:00:00Z",
+    "createdAt": "2026-11-14T10:00:00Z",
     "issue": ""
   },
   {
     "id": "sample-dashboard-poc",
     "title": "Analytics dashboard POC",
-    "description": "Vanilla HTML/JS proof-of-concept exploring a denser, keyboard-first analytics view.\n\n(Sample entry.)",
-    "designer": "Leo Kim",
+    "description": "Vanilla HTML/JS proof-of-concept exploring a denser, keyboard-first analytics view.\n\n(Sample entry. Delete it once real projects are in.)",
+    "designer": "Nikitha Suresh",
     "team": "Platform",
     "type": "poc",
     "status": "Exploring",
@@ -35,14 +35,14 @@
       "data-viz",
       "desktop"
     ],
-    "createdAt": "2026-11-05T09:30:00Z",
+    "createdAt": "2026-11-10T09:30:00Z",
     "issue": ""
   },
   {
     "id": "sample-design-system-tokens",
     "title": "Design tokens v2",
-    "description": "Refreshed color, spacing and type tokens with dark-mode parity.\n\n(Sample entry.)",
-    "designer": "Maya Singh",
+    "description": "Refreshed color, spacing and type tokens with dark-mode parity.\n\n(Sample entry. Delete it once real projects are in.)",
+    "designer": "Jon Ong",
     "team": "Design System",
     "type": "figma",
     "status": "Shipped",
@@ -54,7 +54,64 @@
       "design-system",
       "tokens"
     ],
-    "createdAt": "2026-10-28T14:00:00Z",
+    "createdAt": "2026-11-06T14:00:00Z",
+    "issue": ""
+  },
+  {
+    "id": "sample-ai-search",
+    "title": "AI-assisted search",
+    "description": "Conversational search prototype that suggests filters as you type, built with an AI coding assistant.\n\n(Sample entry. Delete it once real projects are in.)",
+    "designer": "Keith Kennedy",
+    "team": "Platform",
+    "type": "prototype",
+    "status": "In progress",
+    "figma": "https://www.figma.com/community/file/1035203688168086460",
+    "prototype": "https://example.com",
+    "repo": "",
+    "thumbnail": "",
+    "tags": [
+      "ai",
+      "search"
+    ],
+    "createdAt": "2026-11-03T11:00:00Z",
+    "issue": ""
+  },
+  {
+    "id": "sample-checkout-research",
+    "title": "Checkout usability study",
+    "description": "Findings from 12 moderated sessions on the checkout flow, with recommended fixes and before/after flows.\n\n(Sample entry. Delete it once real projects are in.)",
+    "designer": "Yuan Yuan Lin",
+    "team": "Growth",
+    "type": "case-study",
+    "status": "Shipped",
+    "figma": "https://www.figma.com/community/file/1035203688168086460",
+    "prototype": "",
+    "repo": "",
+    "thumbnail": "",
+    "tags": [
+      "research",
+      "checkout"
+    ],
+    "createdAt": "2026-10-29T15:00:00Z",
+    "issue": ""
+  },
+  {
+    "id": "sample-motion-library",
+    "title": "Motion primitives",
+    "description": "A small library of easing curves and micro-interactions for buttons, toasts and drawers.\n\n(Sample entry. Delete it once real projects are in.)",
+    "designer": "Rob Kurdle",
+    "team": "Design System",
+    "type": "poc",
+    "status": "Exploring",
+    "figma": "",
+    "prototype": "https://example.com",
+    "repo": "https://github.com/Keerthithejaswi/Iris",
+    "thumbnail": "",
+    "tags": [
+      "motion",
+      "design-system"
+    ],
+    "createdAt": "2026-10-24T13:00:00Z",
     "issue": ""
   }
 ]
