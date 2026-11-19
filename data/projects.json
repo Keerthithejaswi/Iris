@@ -56,5 +56,23 @@
     ],
     "createdAt": "2026-10-28T14:00:00Z",
     "issue": ""
+  },
+  {
+    "id": "pipeline-test-1",
+    "title": "Pipeline test",
+    "description": "Testing the submission pipeline.",
+    "designer": "Iris Bot",
+    "team": "UX",
+    "type": "poc",
+    "status": "Exploring",
+    "figma": "",
+    "prototype": "https://example.com/",
+    "repo": "",
+    "thumbnail": "",
+    "tags": [
+      "test"
+    ],
+    "createdAt": "2026-11-19T13:42:15Z",
+    "issue": "https://github.com/Keerthithejaswi/Iris/issues/1"
   }
 ]
