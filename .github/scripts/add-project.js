@@ -86,11 +86,22 @@ function upsert(file, project) {
   return idx >= 0 ? 'updated' : 'added';
 }
 
+function remove(file, issueUrl) {
+  const list = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : [];
+  const next = list.filter((p) => !(p.issue && p.issue === issueUrl));
+  if (next.length !== list.length) fs.writeFileSync(file, JSON.stringify(next, null, 2) + '\n');
+  return next.length !== list.length;
+}
+
 // Entry point for actions/github-script
 module.exports = async ({ context }) => {
   const issue = context.payload.issue;
-  const project = toProject(issue);
   const file = path.join(process.env.GITHUB_WORKSPACE || process.cwd(), 'data', 'projects.json');
+  if (context.payload.action === 'unlabeled') {
+    const removed = remove(file, issue.html_url);
+    return { action: removed ? 'removed' : 'none', id: '', title: String(issue.title || '').replace(/^\[Iris\]\s*/i, '') };
+  }
+  const project = toProject(issue);
   const action = upsert(file, project);
   return { action, id: project.id, title: project.title };
 };
@@ -98,3 +109,4 @@ module.exports = async ({ context }) => {
 module.exports.parseIssueBody = parseIssueBody;
 module.exports.toProject = toProject;
 module.exports.upsert = upsert;
+module.exports.remove = remove;

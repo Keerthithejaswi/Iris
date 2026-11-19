@@ -11,6 +11,7 @@ A showcase and directory of the UX team's POCs, Figma files and prototypes. It's
 3. Submit. A GitHub Action adds your entry to `data/projects.json` and redeploys the site within a minute or two.
 
 To update an entry later, **edit the issue**. The site updates automatically.
+To remove an entry, **remove the `submission` label** from its issue.
 
 > Submissions from repo collaborators go live straight away. Anyone else's submission waits until a maintainer adds the `approved` label.
 > Add teammates under **Settings → Collaborators** so their submissions skip the review step.

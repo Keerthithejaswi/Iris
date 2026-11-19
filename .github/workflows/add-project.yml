@@ -2,7 +2,7 @@ name: Add submission to Iris
 
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [opened, edited, labeled, unlabeled]
 
 concurrency:
   group: iris-data
@@ -10,12 +10,15 @@ concurrency:
 
 jobs:
   add:
-    # Runs for submissions from repo collaborators, or for anyone once a maintainer adds the "approved" label.
+    # Adds/updates submissions from repo collaborators, or from anyone once a maintainer adds the "approved" label.
+    # Removing the "submission" label removes the entry from the site.
     if: >-
-      contains(github.event.issue.labels.*.name, 'submission') &&
-      (github.event.action != 'labeled' || github.event.label.name == 'approved') &&
-      (contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association) ||
-       contains(github.event.issue.labels.*.name, 'approved'))
+      (github.event.action == 'unlabeled' && github.event.label.name == 'submission') ||
+      (github.event.action != 'unlabeled' &&
+       contains(github.event.issue.labels.*.name, 'submission') &&
+       (github.event.action != 'labeled' || github.event.label.name == 'approved') &&
+       (contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association) ||
+        contains(github.event.issue.labels.*.name, 'approved')))
     runs-on: ubuntu-latest
     permissions:
       contents: write
